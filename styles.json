@@ -6,6 +6,7 @@
   "h5": "font-medium",
   "h6": "font-medium",
   "p" : "font-medium",
-  "a" : "transition-all duration-200 underline decoration-light-blue hover:decoration-transparent",
+  "a" : "transition-all duration-200 underline decoration-light-green hover:decoration-transparent",
+  "img" : "p-8",
   "i" : "italic"
 }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/9f3da960b8.js" crossorigin="anonymous"></script>
+
+    <title>Ben's Cooking Blog</title>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'light-orange': '#ff9d1a',
+              'light-blue': '#00b1e2',
+              'light-red': '#ff595a',
+              'gray': '#404040',
+              'white': '#ffffff',
+              'off-white': '#f5f5f5',
+              'dark-gray': '#303e48',
+              'black': '#171717',
+              'transparent': 'transparent'
+            }
+
+          }
+        }
+      }
+    </script>
+
+  </head>
+  <body class="bg-off-white font-serif">
+
+    <div id="title" class="text-center">
+      <h1 class="text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</h1>
+      <p class="italic text-gray">a collection of sporadic sustenance shenanigans</p>
+    </div>
+
+    <div id="layout-wrapper" class="grid grid-cols-4 gap-8 p-16">
+
+      <div id="tags-column" class="text-gray">
+        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
+        <br>
+        <p>one word</p>
+      </div>
+
+      <div id="posts-list" class="col-span-2 text-black">
+        <div id="card" class="transition-all duration-200 rounded overflow-hidden shadow-xl hover:shadow-2xl">
+          <a href="">
+            <div class="bg-cover h-32" style="background-image: url(https://media.discordapp.net/attachments/829932712840003625/1038921314443984996/unknown.png)"></div>
+            <div id="card-body" class="p-4 max-h-40">
+              <h3 class="text-3xl text-black underline decoration-light-red">Dumplings</h3>
+              <p class="text-md text-gray">January 3, 2023</p>
+
+              <p class="text-xl text-gray">Lorem ipsum dolor sit amet, consecunt dolor ultrices ut. Sed lorem mp</p>
+           </div>
+          </a>
+        </div>
+
+
+
+      </div>
+      <div id="right-column"></div>
+    </div>
+
+
+
+
+    <!-- <div id="background-image" class="grid place-items-center h-screen align-middle">
+      <div id="text-body" class="rounded-xl backdrop-blur-sm p-8 grid gap-4 grid-flow-row md:grid-flow-col text-xs sm:text-sm md:text-lg lg:text-lg xl:text-3xl">
+        <div class="grid grid-flow-row gap-4">
+            <p id="abovetext" class="text-center font-bold text-dark-brown text-xl sm:space-x-4 md:space-x-8 md:text-2xl slg:space-x-8 lg:text-2xl xl:space-x-12 xl:text-4xl 2xl:space-x-20">Enter secret passcode:</p>
+            <p id="invalidcode" class="text-center text-dark-red text-xl sm:space-x-4 md:space-x-8 md:text-2xl slg:space-x-8 lg:text-2xl xl:space-x-12 xl:text-4xl 2xl:space-x-20"></p>
+            <input class= "bg-transparent text-xl italic md:text-2xl xl:text-2xl text-dark-brown placeholder-dark-brown placeholder-text-center border-dashed border-4 border-dark-red hover:border-dotted" classtype="text" id="pwd" placeholder=" input here">
+            <button class="bg-darker-green p-2 font-extrabold text-dark-brown italic text-3xl border-dashed hover:border-dotted border-8 border-light-green" onclick="goButton()" id="enterb">Go........</button>
+        </div>
+      </div>
+    </div> -->
+
+
+    <script>
+
+      let url = new URL(window.location.href)
+      let params = new URLSearchParams(url.search)
+      let error = params.get("error")
+      if (error == 1) {
+        document.getElementById("invalidcode").innerHTML = 'invalid... 😡';
+        document.getElementById("pwd").value = '';
+
+        if (Math.round(Math.random() * 10) % 2 == 0) {
+          setTimeout(function(){ window.location.href = "https://www.youtube.com/watch?v=DTF_K5D7jX8"}, 500);
+        }
+      }
+
+      function goButton() {
+        let submission = document.getElementById("pwd").value;
+        if (submission.length > 0) {
+          document.getElementById("abovetext").innerHTML = 'unlocking..';
+          console.log(document.getElementById("abovetext").innerHTML);
+
+          document.getElementById("abovetext").classList.add("italic")
+
+          const time = 4000;
+          const periods = 6;
+          setTimeout(function(){ window.location.href = "/" + submission.toLowerCase() + ".html"}, time);
+          // setTimeout(function(){ window.location.href = "/" + "letter_page" + ".html"}, time);
+          for (let x = 0; x < periods; x++) {
+            setTimeout(() => {
+              document.getElementById("abovetext").innerHTML = document.getElementById("abovetext").innerHTML + '.';
+            }, x * (time / periods))
+          }
+
+          console.log("pwd accepted")
+
+        }
+      }
+    
+      console.log("stop poking around nerd!")
+
+    </script>
+
+  </body>
+</html>

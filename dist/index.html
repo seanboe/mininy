@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/9f3da960b8.js" crossorigin="anonymous"></script>
+
+    <title>Ben's Cooking Blog</title>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'light-orange': '#ff9d1a',
+              'light-blue': '#00b1e2',
+              'light-red': '#ff595a',
+              'gray': '#404040',
+              'white': '#ffffff',
+              'off-white': '#f5f5f5',
+              'dark-gray': '#303e48',
+              'black': '#171717',
+              'transparent': 'transparent'
+            }
+
+          }
+        }
+      }
+    </script>
+
+  </head>
+  <body class="bg-off-white font-serif">
+
+    <div id="title" class="text-center">
+      <h1 class="text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</h1>
+      <p class="italic text-gray">a scrumptious stockpile of sporadic sustenance shenanigans</p>
+    </div>
+
+    <div id="layout-wrapper" class="grid grid-cols-4 gap-8 p-16">
+
+      <div id="tags-column" class="text-gray">
+        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
+        <a href="Chinese.html" class="py-8 transition-all duration-200 underline decoration-light-blue hover:decoration-transparent">Chinese </a> <br><a href="Fried.html" class="py-8 transition-all duration-200 underline decoration-light-blue hover:decoration-transparent">Fried </a> <br>
+      </div>
+
+      <div id="posts-list" class="col-span-2 text-black">
+        <div id="card" class="transition-all duration-200 rounded overflow-hidden shadow-xl hover:shadow-2xl">
+  <a href="styling-test.html">
+    <div class="bg-cover h-32" style="background-image: url(https://media.discordapp.net/attachments/1001304414964961401/1057832852881936454/PNG_image.png)"></div>
+    <div id="card-body" class="p-4 max-h-40">
+      <h3 class="text-3xl text-black underline decoration-light-red">styling-test</h3>
+      <p class="text-md text-gray">January 13, 2023</p>
+
+      <p class="text-xl text-gray">A Comprehensive Style Test</p>
+    </div>
+  </a>
+</div> <br><br> 
+ <div id="card" class="transition-all duration-200 rounded overflow-hidden shadow-xl hover:shadow-2xl">
+  <a href="testing.html">
+    <div class="bg-cover h-32" style="background-image: url(https://media.discordapp.net/attachments/1001304414964961401/1057832852881936454/PNG_image.png)"></div>
+    <div id="card-body" class="p-4 max-h-40">
+      <h3 class="text-3xl text-black underline decoration-light-red">testing</h3>
+      <p class="text-md text-gray">January 13, 2023</p>
+
+      <p class="text-xl text-gray">Merry Christmas Mrs. Reigle! Thank you for making APEL so fun last year...</p>
+    </div>
+  </a>
+</div> <br><br> 
+ 
+      </div>
+      <div id="right-column"></div>
+    </div>
+
+  </body>
+</html>

@@ -13,9 +13,12 @@ card_layout_path = "card_layout.html"
 class Layout_Keywords:
   TEXT_BODY = "{{text_body}}"
   POST_TITLE = "{{post_title}}"
+  POST_URL = "{{post_url}}"
   POST_DATE = "{{post_date}}"
   POST_CAPTION = "{{post_caption}}"
   POST_COVER_IMAGE = "{{cover_image}}"
+  CARD_LIST = "{{card_list}}"
+  TAG_LIST = "{{tag_list}}"
 
 class Text_Colors:
   HEADER = '\033[95m'
@@ -44,7 +47,7 @@ def convert_to_html(markdown_text):
     styles = json.load(file)
     for style in styles:
       try: 
-        converted_html = converted_html.replace("<" + style, "<" + style + f" class=\"{styles[style]}\"")
+        converted_html = converted_html.replace("<" + style, "<" + style + f" class=\"{styles[style]}\" ")
       except:
         pass
   return converted_html
@@ -59,18 +62,28 @@ def preprocess_posts():
       line = text.readline().strip()
       while line != "---":
         element = line.split(": ")
-        key = str(element[0])
-        value = str(element[1])
-        if key == "date":
-          metadata[key] = convert_date(value)
-        elif value.find(",") >= 0:
-          metadata[str(element[0])] = str(element[1]).split(", ")
-        else:
-          metadata[str(element[0])] = str(element[1])
+        if len(element) > 1:
+          key = str(element[0].lower())
+          value = str(element[1])
+          if key == "date":
+            metadata[key] = convert_date(value)
+          elif value.find(",") >= 0:
+            metadata[str(element[0])] = str(element[1]).split(", ")
+          else:
+            metadata[str(element[0])] = str(element[1])
         line = text.readline().strip()
       post_body = text.read()
       if "caption" not in metadata:
-        metadata["caption"] = post_body[:post_body.find(" ", 20)] + "..."
+        metadata["caption"] = post_body[:post_body.find(" ", 70)] + "..."
+      if "tags" not in metadata:
+        metadata["tags"] = [""]
+      if type(metadata["tags"]) is str:
+        metadata["tags"] = [metadata["tags"]]
+
+
+
+
+
     data = {"metadata": metadata, "text_body" : convert_to_html(post_body)}
     output[post[:post.find(".")]] = data
   return output
@@ -86,23 +99,46 @@ def generate_html_cards(posts):
     card = card_layout
     try:
       card = card.replace(Layout_Keywords.POST_TITLE, post)
+      card = card.replace(Layout_Keywords.POST_URL, post + ".html")
       card = card.replace(Layout_Keywords.POST_DATE, posts[post]["metadata"]["date"])
       card = card.replace(Layout_Keywords.POST_CAPTION, posts[post]["metadata"]["caption"])
       card = card.replace(Layout_Keywords.POST_COVER_IMAGE, posts[post]["metadata"]["cover_image"])
     except:
       print(Text_Colors.color_wrapper(f"Error building card for post \"{post}\"", Text_Colors.FAIL))
       continue
-    output += card + " \n "
+    output += card + " <br><br> \n "
   return output
+
+def generate_tag_list(posts):
+  output = ""
+  for post in posts:
+    for tag in posts[post]["metadata"]["tags"]:
+      if tag not in output:
+        output += f"<a href=\"/tags/{tag}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{tag} </a> <br>"
+  return output
+
+def generate_post_list(posts, tag):
+  output = ""
+  for post in posts:
+    if tag in posts[post]["metadata"]["tags"]:
+      output += f"<a href=\"/posts/{post}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{post} </a> <br>"
 
 def main():
 
-  x = preprocess_posts()
-  print(x)
-  print()
-
+  # Process the index file
+  print(preprocess_posts())
   with open(base_path + "test.html", "w") as file:
-    file.write(generate_html_cards(x))
+    file.write(generate_tag_list(preprocess_posts()))
+
+  index = ""
+  with open(base_path + layouts_path + "index_layout.html") as file:
+    layout = file.read()
+    processed_posts = preprocess_posts()
+    index = layout.replace(Layout_Keywords.CARD_LIST, generate_html_cards(processed_posts))
+    index = index.replace(Layout_Keywords.TAG_LIST, generate_tag_list(processed_posts))
+  with open(base_path + dist_path + "index.html", "w") as file:
+    file.write(index)
+
 
 
 

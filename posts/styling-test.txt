@@ -1,6 +1,6 @@
 ---
 date: 1-13-2023
-tags: Chinese, Fried
+tags: Chinese 
 caption: A Comprehensive Style Test 
 cover_image: https://media.discordapp.net/attachments/1001304414964961401/1057832852881936454/PNG_image.png
 ---

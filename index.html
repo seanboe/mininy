@@ -35,27 +35,27 @@
   <body class="bg-off-white font-serif">
 
     <div id="title" class="text-center">
-      <h1 class="text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</h1>
-      <p class="italic text-gray">a scrumptious stockpile of sporadic sustenance shenanigans</p>
+      <h1 class="text-6xl lg:text-8xl xl:text-9xl underline decoration-light-blue py-8 px-4 lg:px-16 xl:px-32 text-black">Ben's Cooking Blog</h1>
+      <p class="italic text-gray text-lg lg:text-xl xl:text-2xl">a scrumptious stockpile of sporadic sustenance shenanigans</p>
     </div>
+    <br>
 
-    <div id="layout-wrapper" class="grid grid-cols-4 gap-8 p-16">
+    <div id="layout-wrapper" class="grid grid-cols-5 gap-8 p-4">
 
-      <div id="tags-column" class="text-gray">
-        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
-        <br>
-        <p>one word</p>
+      <div id="tags-column" class="text-gray lg:px-8 xl:px-16">
+        <h3 class="text-3xl underline decoration-light-orange text-black">Tags</h3>
+        <a href="" class="text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent">one word</a>
       </div>
 
-      <div id="posts-list" class="col-span-2 text-black">
+      <div id="posts-list" class="col-span-3 text-black">
         <div id="card" class="transition-all duration-200 rounded overflow-hidden shadow-xl hover:shadow-2xl">
           <a href="">
             <div class="bg-cover h-32" style="background-image: url(https://media.discordapp.net/attachments/829932712840003625/1038921314443984996/unknown.png)"></div>
             <div id="card-body" class="p-4 max-h-40">
-              <h3 class="text-3xl text-black underline decoration-light-red">Dumplings</h3>
-              <p class="text-md text-gray">January 3, 2023</p>
+              <h3 class="text-xl lg:text-2xl xl:text-3xl text-black underline decoration-light-red">Dumplings</h3>
+              <p class="text-sm lg:text-lg text-gray">January 3, 2023</p>
 
-              <p class="text-xl text-gray">Lorem ipsum dolor sit amet, consecunt dolor ultrices ut. Sed lorem mp</p>
+              <p class="text-md lg:text-xl text-gray hidden lg:block">Lorem ipsum dolor sit amet, consecunt dolor ultrices ut. Sed lorem mp</p>
            </div>
           </a>
         </div>
@@ -63,7 +63,7 @@
 
 
       </div>
-      <div id="right-column"></div>
+      <div id="right-column" class="col-span-2"></div>
     </div>
 
 

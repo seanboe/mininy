@@ -44,13 +44,29 @@ def convert_date(date):
 
 def convert_to_html(markdown_text):
   converted_html = markdown.markdown(markdown_text)
+
+  # the markdown converter converts images to the i tag
+  converted_html = converted_html.replace("<i", "<img")
+
+  def center_element(tag, html):
+    element_list = re.findall(f'<{tag}(.*?)/>', html)
+    for element in element_list:
+      element_html = f'<{tag}{element}/>'
+      html = html.replace(element_html, f'<br><div class="flex items-center justify-center">{element_html}</div><br><br>')
+    return html
+  
+  converted_html = center_element("img", converted_html)
+
+  # image_html_list = re.findall(r'<img(.*?)/>', converted_html)
+  # for image in image_html_list:
+  #   image_html = f'<img{image}/>'
+  #   converted_html = converted_html.replace(image_html, f'<br><div class="flex items-center justify-center">{image_html}</div><br>')
+
   with open("styles.json", "r") as file: 
     styles = json.load(file)
     for style in styles:
-      try: 
-        converted_html = converted_html.replace("<" + style, "<" + style + f" class=\"{styles[style]}\" ")
-      except:
-        pass
+      converted_html = converted_html.replace("<" + style, "<" + style + f" class=\"{styles[style]}\" ")
+
   return converted_html
 
 def preprocess_posts():
@@ -115,9 +131,10 @@ def preprocess_tags_post(posts):
   for post in posts:
     for tag in posts[post]["metadata"]["tags"]:
       if tag not in output:
-        output[tag] = {"tag_url" : f"<a href=\"/tags/{tag}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{tag} </a> <br>"}
+        # output[tag] = {"tag_url" : f"<a href=\"/tags/{tag}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{tag} </a> <br>"}
+        output[tag] = {"tag_url" : convert_to_html(f"<a href=\"/tags/{tag}.html\">{tag} </a> <br>")}
         output[tag]["post_urls"] = []
-      output[tag]["post_urls"].append(f"<a href=\"/posts/{post}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{post} </a> <br>")
+      output[tag]["post_urls"].append(convert_to_html(f"<a href=\"/posts/{post}.html\">{post} </a> <br>"))
   return output
 
 # def generate_tag_list(posts):
@@ -194,7 +211,6 @@ def main():
 
   # Generate the posts under /dist/posts/
   generate_posts(processed_posts, processed_tags_posts)
-
 
 
 

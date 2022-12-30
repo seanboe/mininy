@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/9f3da960b8.js" crossorigin="anonymous"></script>
+    <script src="./tailwind-styles.js"></script>
+
+    <title>Ben's Cooking Blog</title>
+
+  </head>
+  <body class="bg-off-white font-serif">
+
+    <div id="title" class="text-center">
+      <h1 class="text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</h1>
+      <p class="italic text-gray">a scrumptious stockpile of sporadic sustenance shenanigans</p>
+    </div>
+
+    <div id="layout-wrapper" class="grid grid-cols-4 gap-8 p-16">
+
+      <div id="tags-column" class="text-gray">
+        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
+        <a href="/tags/Chinese.html" class="text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent">Chinese </a> <br><a href="/tags/Fried.html" class="text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent">Fried </a> <br>
+      </div>
+
+      <div id="posts-list" class="col-span-2 text-black">
+        <div id="card" class="transition-all duration-200 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl">
+  <a href="/posts/styling-test.html">
+    <div class="bg-cover h-32" style="background-image: url(https://media.discordapp.net/attachments/881969144814256200/1058197637616123924/Screenshot_2022-12-29_at_5.39.33_PM.png)"></div>
+    <div id="card-body" class="p-4 max-h-40">
+      <h3 class="text-xl lg:text-2xl xl:text-3xl text-black underline decoration-light-red">styling test</h3>
+      <p class="text-sm lg:text-lg text-gray italic">January 13, 2023</p>
+
+      <p class="text-md lg:text-xl text-gray hidden lg:block">A Comprehensive Style Test</p>
+    </div>
+  </a>
+</div> <br><br> 
+ <div id="card" class="transition-all duration-200 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl">
+  <a href="/posts/testing.html">
+    <div class="bg-cover h-32" style="background-image: url(https://media.discordapp.net/attachments/881969144814256200/1058197786526498956/Screenshot_2022-12-29_at_5.40.09_PM.png)"></div>
+    <div id="card-body" class="p-4 max-h-40">
+      <h3 class="text-xl lg:text-2xl xl:text-3xl text-black underline decoration-light-red">testing</h3>
+      <p class="text-sm lg:text-lg text-gray italic">January 13, 2023</p>
+
+      <p class="text-md lg:text-xl text-gray hidden lg:block">Merry Christmas Mrs. Reigle! Thank you for making APEL so fun last year...</p>
+    </div>
+  </a>
+</div> <br><br> 
+ 
+      </div>
+      <div id="right-column"></div>
+    </div>
+
+  </body>
+</html>

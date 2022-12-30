@@ -1,8 +1,8 @@
 ---
 date: 1-13-2023
-tags: Chinese, Fried
+tags: Chinese
 caption: A Comprehensive Style Test 
-cover_image: https://media.discordapp.net/attachments/1001304414964961401/1057832852881936454/PNG_image.png
+cover_image: https://media.discordapp.net/attachments/881969144814256200/1058197637616123924/Screenshot_2022-12-29_at_5.39.33_PM.png
 ---
 
 In bibendum velit sed enim tincidunt malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed sollicitudin urna. Curabitur auctor viverra dui a pretium. Mauris placerat sollicitudin mauris, eget volutpat orci volutpat in. Phasellus nec libero sed mauris ornare luctus accumsan vitae turpis. Morbi quam nibh, venenatis sit amet sagittis et, elementum tristique neque. Fusce condimentum enim ut tincidunt varius. Phasellus hendrerit dictum mauris. Sed suscipit consequat massa, sit amet rhoncus metus blandit in. Sed sit amet odio lacinia, tincidunt orci in, euismod enim.

@@ -134,7 +134,8 @@ def preprocess_tags_post(posts):
         # output[tag] = {"tag_url" : f"<a href=\"/tags/{tag}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{tag} </a> <br>"}
         output[tag] = {"tag_url" : convert_to_html(f"<a href=\"/tags/{tag}.html\">{tag} </a> <br>")}
         output[tag]["post_urls"] = []
-      output[tag]["post_urls"].append(convert_to_html(f"<a href=\"/posts/{post}.html\">{post} </a> <br>"))
+      post_name = post.replace("-", " ")
+      output[tag]["post_urls"].append(convert_to_html(f"<a href=\"/posts/{post}.html\">{post_name} </a> <br>"))
   return output
 
 # def generate_tag_list(posts):

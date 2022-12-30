@@ -4,6 +4,4 @@ tags: Chinese, Fried
 cover_image: https://media.discordapp.net/attachments/881969144814256200/1058197786526498956/Screenshot_2022-12-29_at_5.40.09_PM.png
 
 ---
-Merry Christmas Mrs. Reigle! Thank you for making APEL so fun last year (well, at least, as fun as it could be :D ) and helping me improve my 
-writing so much! Of course, thank you for writing a letter of recommendation for me and tolerating my many questions/requests - it means a lot!
-Thank you!
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat diam at ultricies viverra. Morbi elementum iaculis tincidunt. Pellentesque auctor venenatis ante, et facilisis augue tempus ac. Donec semper justo in neque consequat dapibus. Morbi feugiat libero vitae nisl fringilla mollis. Fusce varius fermentum neque, vitae sagittis augue porta eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.

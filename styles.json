@@ -9,5 +9,5 @@
   "a" : "transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent",
   "img" : "shadow-xl rounded-2xl",
   "strong" : "font-bold",
-  "blockquote" : "mx-12 lg:mx-40 border-l-4 border-light-blue p-4 italic rounded-lg backdrop-blur-xl bg-off-white shadow-xl"
+  "blockquote" : "mx-12 lg:mx-40 border-l-4 border-light-red p-4 italic rounded-lg backdrop-blur-xl bg-off-white shadow-xl"
 }

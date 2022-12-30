@@ -5,7 +5,7 @@
   "h4": "font-semibold",
   "h5": "font-medium",
   "h6": "font-medium",
-  "p" : "font-medium",
+  "p" : "",
   "a" : "transition-all duration-200 underline decoration-light-green hover:decoration-transparent",
   "img" : "p-8",
   "i" : "italic"

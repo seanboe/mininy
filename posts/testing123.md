@@ -1,6 +1,6 @@
 ---
 date: 2-26-2023
-tags: Chinese, new
+tags: Chinese, New
 cover_image: https://media.discordapp.net/attachments/1001304414964961401/1057832852881936454/PNG_image.png
 ---
 

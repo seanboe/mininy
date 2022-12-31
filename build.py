@@ -182,6 +182,12 @@ def generate_posts(posts, processed_tags_posts):
     except:
       print(Text_Colors.color_wrapper(f"Error building page for post \"{post}\"", Text_Colors.FAIL))
 
+
+def generate_tags(posts, processed_tags_posts):
+  pass
+
+
+
 def main():
 
   # Some setup stuff
@@ -215,13 +221,9 @@ def main():
 
 
 
+  print(processed_posts)
 
 
-
-
-
-
-  # print(preprocess_tag_post(preprocess_posts()))
 
 
 

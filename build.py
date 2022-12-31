@@ -4,6 +4,8 @@ import markdown
 from os import listdir
 from os.path import isfile, join
 
+site_name = "Ben's Cooking Blog"
+
 base_path = '/Users/seanboerhout/Documents/webDev/ben-cooking-blog/'
 layouts_path = 'layouts/'
 posts_path = 'posts/'
@@ -21,6 +23,7 @@ class Layout_Keywords:
   TAG_LIST = "{{tag_list}}"
   RELATED_POSTS_LIST = "{{related_posts}}"
   TAG_NAME = "{{tag_name}}"
+  SITE_NAME = "{{site_name}}"
 
 class Text_Colors:
   HEADER = '\033[95m'
@@ -139,20 +142,6 @@ def preprocess_tags_post(posts):
       output[tag]["post_urls"].append(convert_to_html(f"<a href=\"/posts/{post}.html\">{post_name} </a> <br>"))
   return output
 
-# def generate_tag_list(posts):
-#   output = ""
-#   for post in posts:
-#     for tag in posts[post]["metadata"]["tags"]:
-#       if tag not in output:
-#         output += f"<a href=\"/tags/{tag}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{tag} </a> <br>"
-#   return output
-
-# def generate_post_list(posts, tag):
-#   output = ""
-#   for post in posts:
-#     if tag in posts[post]["metadata"]["tags"]:
-#       output += f"<a href=\"/posts/{post}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{post} </a> <br>"
-
 # Generates an all posts
 def generate_posts(posts, processed_tags_posts):
   template_layout = ""
@@ -207,6 +196,7 @@ def generate_tags(posts, processed_tags_posts):
         tag_list += processed_tags_posts[tag_element]["tag_url"]
 
     try:
+      tag_page = tag_page.replace(Layout_Keywords.SITE_NAME, site_name)
       tag_page = tag_page.replace(Layout_Keywords.TAG_NAME, tag)
       tag_page = tag_page.replace(Layout_Keywords.CARD_LIST, cards)
       tag_page = tag_page.replace(Layout_Keywords.TAG_LIST, tag_list)
@@ -240,7 +230,8 @@ def main():
   index = ""
   with open(base_path + layouts_path + "index_layout.html") as file:
     layout = file.read()
-    index = layout.replace(Layout_Keywords.CARD_LIST, generate_html_cards(processed_posts))
+    index = layout.replace(Layout_Keywords.SITE_NAME, site_name)
+    index = index.replace(Layout_Keywords.CARD_LIST, generate_html_cards(processed_posts))
     index = index.replace(Layout_Keywords.TAG_LIST, tag_list)
   with open(base_path + dist_path + "index.html", "w") as file:
     file.write(index)
@@ -248,57 +239,6 @@ def main():
   # Generate the posts under /dist/posts/
   generate_posts(processed_posts, processed_tags_posts)
   generate_tags(processed_posts, processed_tags_posts)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def main():
-
-#   layout_body_standard = ""
-#   layout_keywords = []
-#   with open(base_path + "letter-layout.html", "r") as layout:
-#     layout_body_standard = layout.read()
-#     layout_keywords = re.findall(r'{{(.*?)}}', layout_body_standard)
-  
-#   letter_files = [f for f in listdir(base_path + letters_path) if isfile(join(base_path + letters_path, f))]
-
-#   for letter in letter_files:
-#     text_body = ""
-#     layout_body = layout_body_standard
-#     metadata = {}
-#     with open(base_path + letters_path + letter, "r") as text:
-#       text.readline()
-#       line = text.readline().strip()
-#       while line != "---":
-#         element = line.split(" ")
-#         metadata[str(element[0])[:-1]] = str(element[1])
-#         line = text.readline().strip()
-      
-#       text_body = text.read()
-
-#     layout_body = layout_body.replace("{{text_body}}", text_body)
-#     for keyword in layout_keywords:
-#       if keyword == "text_body":
-#         continue
-#       try:
-#         layout_body =layout_body.replace("{{" + keyword + "}}", metadata[keyword])
-#       except:
-#         print(f"Error in building file \"{letter}\"")
-
-#     with open(base_path + dist_path + letter[:letter.find(".")] + ".html", "w") as dist_file:
-#       dist_file.write(layout_body)
-
-#     print(f"Build completed!   \"{letter}\"")
 
 if __name__ == "__main__":
   main()

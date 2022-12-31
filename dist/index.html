@@ -12,21 +12,21 @@
     <title>Ben's Cooking Blog</title>
 
   </head>
-  <body class="bg-off-white font-serif">
+  <body class="bg-off-white font-serif m-2">
 
     <div id="title" class="text-center">
-      <a href="/index.html"class="text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</a>
+      <a href="/index.html"class="text-6xl lg:text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</a>
       <p class="italic text-gray">a scrumptious stockpile of sporadic sustenance shenanigans</p>
     </div>
 
-    <div id="layout-wrapper" class="grid grid-cols-4 gap-8 p-16">
+    <div id="layout-wrapper" class="grid grid-row-3 lg:grid-cols-5 gap-8 p-16">
 
-      <div id="tags-column" class="text-gray">
+      <div id="left-tags-column" class="text-gray hidden lg:block">
         <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
-        <p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/Chinese.html">Chinese </a> <br></p><p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/new.html">new </a> <br></p><p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/Fried.html">Fried </a> <br></p>
+        <p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/Chinese.html">Chinese </a> <br></p><p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/New.html">New </a> <br></p><p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/Fried.html">Fried </a> <br></p>
       </div>
 
-      <div id="posts-list" class="col-span-2 text-black">
+      <div id="posts-list" class="col-span-3 text-black">
         <div id="card" class="transition-all duration-200 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl">
   <a href="/posts/Style-Test.html">
     <div class="bg-cover h-32" style="background-image: url(https://media.discordapp.net/attachments/881969144814256200/1058197637616123924/Screenshot_2022-12-29_at_5.39.33_PM.png)"></div>
@@ -63,7 +63,10 @@ _Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur...</p>
 </div> <br><br> 
  
       </div>
-      <div id="right-column"></div>
+      <div id="right-tags-column" class="text-gray block lg:hidden">
+        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
+        <p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/Chinese.html">Chinese </a> <br></p><p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/New.html">New </a> <br></p><p class="" ><a class="transition-all duration-200 underline decoration-light-green decoration-2 hover:decoration-transparent"  href="/tags/Fried.html">Fried </a> <br></p>
+      </div>
     </div>
 
   </body>

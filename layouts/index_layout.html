@@ -12,24 +12,27 @@
     <title>Ben's Cooking Blog</title>
 
   </head>
-  <body class="bg-off-white font-serif">
+  <body class="bg-off-white font-serif m-2">
 
     <div id="title" class="text-center">
-      <a href="/index.html"class="text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</a>
+      <a href="/index.html"class="text-6xl lg:text-8xl underline decoration-light-blue py-4 text-black">Ben's Cooking Blog</a>
       <p class="italic text-gray">a scrumptious stockpile of sporadic sustenance shenanigans</p>
     </div>
 
-    <div id="layout-wrapper" class="grid grid-cols-4 gap-8 p-16">
+    <div id="layout-wrapper" class="grid grid-row-3 lg:grid-cols-5 gap-8 p-16">
 
-      <div id="tags-column" class="text-gray">
+      <div id="left-tags-column" class="text-gray hidden lg:block">
         <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
         {{tag_list}}
       </div>
 
-      <div id="posts-list" class="col-span-2 text-black">
+      <div id="posts-list" class="col-span-3 text-black">
         {{card_list}}
       </div>
-      <div id="right-column"></div>
+      <div id="right-tags-column" class="text-gray block lg:hidden">
+        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
+        {{tag_list}}
+      </div>
     </div>
 
   </body>

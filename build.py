@@ -73,6 +73,9 @@ def convert_to_html(markdown_text):
 
   return converted_html
 
+
+# Puts all the posts into a known structure:
+# {"post" : {"metadata" : {"date" : "date", "tags", ["tags"], "caption" : "caption", "cover_image" : "image_link"}, {"text_body" : "body"}}}
 def preprocess_posts():
   output = {}
   for post in all_posts:
@@ -239,6 +242,8 @@ def main():
   # Generate the posts under /dist/posts/
   generate_posts(processed_posts, processed_tags_posts)
   generate_tags(processed_posts, processed_tags_posts)
+
+  print(processed_posts)
 
 if __name__ == "__main__":
   main()

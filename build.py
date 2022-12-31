@@ -196,7 +196,6 @@ def generate_tags(posts, processed_tags_posts):
     associated_posts = {}
     for post_url in processed_tags_posts[tag]["post_urls"]:
       post = re.findall("/posts/(.*?).html", post_url)[0]
-      print(post)
       associated_posts[post] = posts[post]
 
     # Build the cards
@@ -250,9 +249,6 @@ def main():
   generate_posts(processed_posts, processed_tags_posts)
   generate_tags(processed_posts, processed_tags_posts)
 
-  print(processed_posts)
-  print()
-  print(processed_tags_posts)
 
 
 

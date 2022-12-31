@@ -20,6 +20,7 @@ class Layout_Keywords:
   CARD_LIST = "{{card_list}}"
   TAG_LIST = "{{tag_list}}"
   RELATED_POSTS_LIST = "{{related_posts}}"
+  TAG_NAME = "{{tag_name}}"
 
 class Text_Colors:
   HEADER = '\033[95m'
@@ -152,7 +153,7 @@ def preprocess_tags_post(posts):
 #     if tag in posts[post]["metadata"]["tags"]:
 #       output += f"<a href=\"/posts/{post}.html\" class=\"text-lg transition-all duration-200 underline decoration-light-blue hover:decoration-transparent\">{post} </a> <br>"
 
-# Generates an individual post
+# Generates an all posts
 def generate_posts(posts, processed_tags_posts):
   template_layout = ""
   with open(base_path + layouts_path + "post_layout.html") as file:
@@ -183,9 +184,38 @@ def generate_posts(posts, processed_tags_posts):
       print(Text_Colors.color_wrapper(f"Error building page for post \"{post}\"", Text_Colors.FAIL))
 
 
+# Generates the tag pages
 def generate_tags(posts, processed_tags_posts):
-  pass
+  
+  template = ""
+  with open(base_path + layouts_path + "tag_layout.html") as file:
+    template = file.read()
 
+  for tag in processed_tags_posts:
+    tag_page = template
+    associated_posts = {}
+    for post_url in processed_tags_posts[tag]["post_urls"]:
+      post = re.findall("/posts/(.*?).html", post_url)[0]
+      print(post)
+      associated_posts[post] = posts[post]
+
+    # Build the cards
+    cards = generate_html_cards(associated_posts)
+
+    tag_list = ""
+    for tag_element in processed_tags_posts:
+      if tag_element is not tag:
+        tag_list += processed_tags_posts[tag_element]["tag_url"]
+
+    try:
+      tag_page = tag_page.replace(Layout_Keywords.TAG_NAME, tag)
+      tag_page = tag_page.replace(Layout_Keywords.CARD_LIST, cards)
+      tag_page = tag_page.replace(Layout_Keywords.TAG_LIST, tag_list)
+    except:
+      print(Text_Colors.color_wrapper(f"Error building page for tag \"{tag}\"", Text_Colors.FAIL))
+    
+    with open(base_path + dist_path + f"tags/{tag}.html", "w") as file:
+      file.write(tag_page)
 
 
 def main():
@@ -218,10 +248,11 @@ def main():
 
   # Generate the posts under /dist/posts/
   generate_posts(processed_posts, processed_tags_posts)
-
-
+  generate_tags(processed_posts, processed_tags_posts)
 
   print(processed_posts)
+  print()
+  print(processed_tags_posts)
 
 
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/9f3da960b8.js" crossorigin="anonymous"></script>
+    <script src="../tailwind-styles.js"></script>
+
+    <title>Ben's Cooking Blog</title>
+
+  </head>
+  <body class="bg-off-white font-serif m-2">
+
+    <div id="title" class="grid place-items-center">
+      <div class="">
+        <a href="../index.html"class="text-md lg:text-xl underline decoration-light-blue py-4 text-black float-left px-2 lg:px-8">Ben's Cooking Blog</a>
+        <a href="/tags/{{tag_name}}.html"class="text-6xl lg:text-8xl underline decoration-light-blue py-4 text-black float-right px-2 lg:px-8 border-l-4 border-light-blue">{{tag_name}}</a>
+      </div>
+    </div>
+
+    <div id="layout-wrapper" class="grid grid-row-3 lg:grid-cols-5 gap-8 p-16">
+
+      <div id="left-tags-column" class="text-gray hidden lg:block">
+        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
+        {{tag_list}}
+      </div>
+
+      <div id="posts-list" class="col-span-3 text-black">
+        {{card_list}}
+      </div>
+      <div id="right-tags-column" class="text-gray block lg:hidden">
+        <h3 class="text-3xl underline decoration-light-orange">Tags</h3>
+        {{tag_list}}
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,6 +1,7 @@
 import re
 import json
 import markdown
+from datetime import datetime
 from os import listdir
 from os.path import isfile, join
 
@@ -73,6 +74,30 @@ def convert_to_html(markdown_text):
 
   return converted_html
 
+def sort_posts_by_date(posts):
+
+  date_object_list = []
+  for post in posts:
+    post_date_string = posts[post]["metadata"]["date"]
+    post_date = datetime.strptime(post_date_string, "%B %d, %Y")
+    date_object_list.append([post_date, post])
+
+  for x in range(0, len(date_object_list)):
+    recent_index = x
+    for a in range(x + 1, len(date_object_list)):
+      if str(date_object_list[a][0] - date_object_list[recent_index][0]).find("-"):
+        recent_index = a
+    temp = date_object_list[x]
+    date_object_list[x] = date_object_list[recent_index]
+    date_object_list[recent_index] = temp
+
+  output = {}
+
+  for x in range(0, len(date_object_list)):
+    output[date_object_list[x][1]] = posts[date_object_list[x][1]]
+
+  return output
+
 
 # Puts all the posts into a known structure:
 # {"post" : {"metadata" : {"date" : "date", "tags", ["tags"], "caption" : "caption", "cover_image" : "image_link"}, {"text_body" : "body"}}}
@@ -105,8 +130,10 @@ def preprocess_posts():
         metadata["tags"] = [metadata["tags"]]
     data = {"metadata": metadata, "text_body" : convert_to_html(post_body)}
     output[post[:post.find(".")]] = data
+  output = sort_posts_by_date(output)
   return output
 
+# Returns the html for the cards for the given posts (given in the dictionary structure from preprocess_posts())
 def generate_html_cards(posts):
   output = ""
 
@@ -243,7 +270,9 @@ def main():
   generate_posts(processed_posts, processed_tags_posts)
   generate_tags(processed_posts, processed_tags_posts)
 
-  print(processed_posts)
+
+  sort_posts_by_date(processed_posts)
+
 
 if __name__ == "__main__":
   main()

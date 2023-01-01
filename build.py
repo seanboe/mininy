@@ -190,6 +190,7 @@ def generate_posts(posts, processed_tags_posts):
             related_posts += post_url
 
       layout = template_layout
+      layout = layout.replace(Layout_Keywords.SITE_NAME, site_name)
       layout = layout.replace(Layout_Keywords.POST_TITLE, post.replace("-", " "))
       layout = layout.replace(Layout_Keywords.POST_COVER_IMAGE, posts[post]["metadata"]["cover_image"])
       layout = layout.replace(Layout_Keywords.POST_DATE, posts[post]["metadata"]["date"])

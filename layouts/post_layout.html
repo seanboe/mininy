@@ -24,7 +24,10 @@
         <div></div>
         <div class="col-span-3">
           <br>
-          <h1 class="text-black text-4xl lg:text-5xl font-bold underline decoration-light-blue">{{post_title}}</h1>
+          <div class="flex">
+            <a href="../index.html" class="text-lg lg:text-xl underline decoration-light-blue pr-4">{{site_name}}</a>
+            <a href="./{{post_title}}.html" class="text-black text-3xl lg:text-4xl lg:text-5xl font-bold underline decoration-light-blue pl-4 border-l-2 border-light-blue">{{post_title}}</a>
+          </div>
           <br>
           <p class="text-md lg:text-lg text-gray italic">{{post_date}}</p>
           <div class="relative flex items-center py-5"><div class="flex-grow border-t w-max border-2 border-light-gray"></div></div>        
